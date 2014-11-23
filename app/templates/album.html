@@ -1,0 +1,9 @@
+<li class="clearfix" data-album_id="<%= album.gphoto$id.$t%>">
+    <img  src="<%= album.media$group.media$thumbnail[0].url%>" alt=""/>
+    <div class="info ">
+        <h2><%= album.media$group.media$title.$t%></h2>
+        <span class="icon-inbox  files"><%= album.gphoto$numphotos.$t%> files</span>
+        <span class="icon-time time"><%= agoDate%><!--2 hours ago--></span>
+    </div>
+    <i class="icon-double-angle-right dar"></i>
+</li>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/yepnope/1.5.4/yepnope.min.js"></script>
+    <link rel="stylesheet" href="assets/libs/normalize-css/normalize.css"/>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.min.css"/>
+
+</head>
+<body>
+    <header>
+        <section id="auth"></section>
+        <section class="searchbox">
+            <i class="icon-search"></i>
+            <input type="text"  placeholder="поиск" class="search"/>
+            <i class="icon-remove-sign"></i>
+        </section>
+    </header>
+    <section class="content">
+        <nav class="tab">
+            <ul class="clearfix">
+                <li class="icon-picture selected"></li>
+                <li class="icon-windows"></li>
+                <li class="icon-map-marker "></li>
+                <li class="icon-comment"></li>
+                <li class="icon-unchecked"></li>
+                <li class="icon-upload-alt"></li>
+            </ul>
+        </nav>
+
+        <div class="status">
+            <div class="album_status" id="album_status"></div>
+        </div>
+
+        <div id="cnt">
+            <ul class="listAlbum  clearfix" id="listAlbum"></ul>
+
+            <ul class="photosAlbum clearfix" id="photosAlbum"></ul>
+
+            <div class="selectedPhoto" id="selectedPhoto"></div>
+            <div id="content"></div>
+        </div>
+    </section>
+
+
+
+
+
+<script type="text/javascript">
+    yepnope({
+        load : [
+            '/assets/libs/jquery/dist/jquery.min.js'
+            ,'/assets/libs/modernizr/modernizr.js'
+            ,'/assets/libs/underscore/underscore-min.js'
+            ,'/assets/libs/backbone/backbone.js'
+            ,'/assets/libs/moment/min/moment.min.js'
+
+            ,'https://apis.google.com/js/client:auth.js'
+            ,'https://apis.google.com/js/client:client.js'
+            ,'/assets/bundle.js'
+            ,'https://apis.google.com/js/client:plusone.js'
+        ]
+        ,complete: function () {
+            console.info('loaded');
+        }
+    });
+</script>
+
+</body>
+</html>

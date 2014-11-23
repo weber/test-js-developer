@@ -1,0 +1,101 @@
+#include common/upstream;
+#include common/php-fpm;
+server {
+	listen 80; ## listen for ipv4; this line is default and implied
+	#listen	443	ssl;	# использовать шифрование для этого пор
+
+    set $prj_path               "/home/webs/PROJECT/";
+    set $prj_dirname_www        "test-js-developer";
+    set $prj_dirname_access_log "logs/local.access.log";
+    set $prj_dirname_error_log  "logs/local.error.log";
+
+    set $prj_path_www           "$prj_path$prj_dirname_www";
+    set $prj_path_access_log    "$prj_path$prj_dirname_access_log";
+    set $prj_path_error_log     "$prj_path$prj_dirname_error_log";
+
+    root $prj_path_www;
+    access_log $prj_path_access_log;
+    error_log $prj_path_error_log;
+
+	index       index.html index.htm;
+	server_name test.localhost;
+	charset     utf-8;
+ 	#Размер данных принемаемых post запросом
+    client_max_body_size 15m;
+
+
+	location '/'  {
+
+        #исполнения php
+        if (-f $request_filename) {
+            break;
+        }
+
+        #otherwise rewrite it
+        if (!-e $request_filename) {
+            rewrite ^(.+)$ /index.html?_url=$1 last;
+            break;
+        }
+
+
+	}
+
+
+	location ~* \.(?:jpg|jpeg|gif|png|ico|gz|svg|svgz|mp4|ogg|ogv|webm)$ {
+            expires 1M;
+            access_log off;
+            add_header Cache-Control "public";
+        }
+
+	#запрещаем логировать и просматривать файлы контролей версий
+	location ~* /\.(ht|svn|git) {
+        access_log off;
+        log_not_found off;
+        deny all;
+    }
+
+
+
+    #разрешаем исполнят только index.php в корне сайта
+	# location ~ index\.php {
+	# 	allow all;
+ #        include common/php-fpm;
+	# }
+
+    #запрещаем исполнят другим php скриптам
+    # location ~ \.php$ {
+    #     #deny all;
+    #     allow all;
+    #     include common/php-fpm;
+    # }
+
+    #разрешаем шаблоны
+    location ~ \.hbs$ {
+        allow all;
+    }
+
+    #разрешаем шаблоны
+    location ~ \.map$ {
+        allow all;
+    }
+
+    #не логировать ошибки с favicon
+	location = /favicon.ico {
+		log_not_found off;
+		access_log off;
+	}
+
+	#не логировать ошибки с favicon
+	location = /robots.txt {
+		allow all;
+		log_not_found off;
+		access_log off;
+	}
+
+	#блокируем просмотр .htaccess & .htpassword
+	location ~ /\.ht {
+		deny  all;
+	}
+
+}
+

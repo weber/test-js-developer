@@ -1,0 +1,20 @@
+<li class="clearfix" >
+    <img  src="<%= media$group.media$thumbnail[1].url%>" alt=""/>
+    <div class="controll">
+        <span class="icon-ok"></span>
+        <a href="#" data-photo_id="<%= gphoto$id.$t%>" >Select</a>
+        <span class="tooltip ">
+                            <div class="clearfix">
+                                <div class="col-left">File name:</div><div class="col-right"><%= media$group.media$title.$t%></div>
+                                <div class="col-left">Object:</div><div class="col-right"><%= title.$t%></div>
+
+                                <% if(media$group.media$description.$t) {%>
+                                    <div class="col-left">Caption:</div><div class="col-right">
+                                        <%= media$group.media$description.$t%>
+                                    </div>
+                                <%}%>
+                            </div>
+                        </span>
+    </div>
+
+</li>

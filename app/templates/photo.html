@@ -1,0 +1,27 @@
+<img  src="<%= media$group.media$content[0].url%>" alt=""/>
+<div class="info">
+    <table>
+        <tr>
+            <td >File name:</td>
+            <td><%= media$group.media$title.$t%></td>
+        </tr>
+        <tr>
+            <td>Object:</td>
+            <td><%= title.$t%></td>
+        </tr>
+        <tr>
+            <td>Caption:</td>
+            <td>
+                <%= media$group.media$description.$t%>
+            </td>
+        </tr>
+        <!--<tr>
+            <td>Keywords:</td>
+            <td>
+                <span>Artress</span>
+                <span>Star</span>
+                <span>Red carpet</span>
+            </td>
+        </tr>-->
+    </table>
+</div>

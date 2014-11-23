@@ -1,0 +1,13 @@
+<div class="auth">
+    <span id="signinButton" class="signinButton" >
+          <span
+                  class="g-signin"
+                  data-callback="connectUser"
+                  data-clientid=<%= data_clientid%>
+                  data-cookiepolicy="<%= data_cookiepolicy%>"
+                  data-requestvisibleactions="<%= data_requestvisibleactions%>"
+                  data-scope="<%= data_scope%>">
+          </span>
+    </span>
+    <span id="revokeButton" class="revokeButton"><%= revokeButtom_title%></span>
+</div>
